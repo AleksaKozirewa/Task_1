@@ -1,71 +1,69 @@
 <!DOCTYPE html>
 <html lang="">
 
-	<head>
-    
-<meta charset="utf-8">
-    
-<title>Текстовое поле ввода</title>
-    
-<link rel="stylesheet" href="style.css">
-  
-	</head>
-  
+<head>
 
-	<body>
-  
-  	<div><header class="page-header">Library</header></div>
+	<meta charset="utf-8">
+
+	<title>Текстовое поле ввода</title>
+
+
+
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+	<header class="page-header">Library</header>
+
 	<main>
 
-	
-<div><nav class="main-menu">
-            
-<div><a class="home" href="#home"><img src="home.png" alt=" " width="30" height="30"></a></div>
-    
-<div><a class="note" href="#blog"><img src="note.jpg" alt=" "  width="30" height="30"></a></div>
-</nav>
+
+		<nav class="main-menu">
+
+			<div><a class="home" href="#home"><img src="home.png" alt=" " width="30" height="30"></a></div>
+
+			<div><a class="note" href="#blog"><img src="note.png" alt=" " width="30" height="30"></a></div>
+		</nav>
 
 
-</div>    
 
-	
-	
-	<fieldset class="information" style="color: #aaa999"> 
-	<legend>Personal Information</legend>
-	<label for="name" style="color: #aaa999">Name</label>  
-	<input type="text" id="name" name="name" required>  
-	<label for="age" style="color: #aaa999">Age</label>
-      
-	<input type="number" name="age" id="age" min="18" max="90" required>
-	<hr>
-	<div class ="buttons">
-	<input type="submit" value="Add">
-	</div>
-	</fieldset>
-	
-	
-	<fieldset class="users" style="color: #aaa999">
-	<div >No users here... yet<hr></div>
-	</fieldset>
-	
-	</main> 
-	<script>
-      if (window.localStorage) {
-        var elements = document.querySelectorAll('[name]');
+		<form>
+			<fieldset class="information">
+				<legend>Personal Information</legend>
+				<label for="name" style="color: #aaa999">Name</label>
 
-        for (var i = 0, length = elements.length; i < length; i++) {
-          (function(element) {
-            var name = element.getAttribute('name');
+				<input type="text" id="name" name="name" required>
+				<label for="age" style="color: #aaa999">Age</label>
 
-            element.value = localStorage.getItem(name) || '';
+				<input type="number" name="age" id="age" min="18" max="90" required>
+				<hr>
+				<div class="buttons">
+					<script>
+						function myF() {
+							var a = document.getElementById("name").value;
+							var b = document.getElementById("age").value;
 
-            element.onkeyup = function() {
-              localStorage.setItem(name, element.value);
-            };
-          })(elements[i]);
-        }
-      }
-    </script>
-	</body>
+							localStorage.setItem("a", a);
+							localStorage.setItem("b", b);
+						}
+					</script>
+					<input type="submit" onClick="myF()" value="Add">
+				</div>
+			</fieldset>
+		</form>
+
+
+		<fieldset class="users" style="color: #aaa999">
+			<div>No users here... yet
+				<hr>
+			</div>
+		</fieldset>
+
+	</main>
+
+</body>
 
 </html>
