@@ -41,16 +41,9 @@
 				<input type="number" name="age" id="age" min="18" max="90" required>
 				<hr>
 				<div class="buttons">
-					<script>
-						function myF() {
-							var a = document.getElementById("name").value;
-							var b = document.getElementById("age").value;
-
-							localStorage.setItem("a", a);
-							localStorage.setItem("b", b);
-						}
-					</script>
-					<input type="submit" onClick="myF()" value="Add">
+					
+															
+					<input type="submit" value="Add">
 				</div>
 			</fieldset>
 		</form>
@@ -63,7 +56,32 @@
 		</fieldset>
 
 	</main>
+	<script>
+		function onFormSubmit(e) {
+			//Чтобы форма не перезагружалась 
+			e.preventDefault();
 
+			//Обозначаем переменные понятными именами
+			const name = document.getElementById("name").value;
+			const age = document.getElementById("age").value;
+			/* 
+			В дальнейшем предполагается, что мы будем хранить в localStorage несколько юзеров
+			Пока не загружаем список из него, а создаем каждый раз новый
+			*/
+			const users = [];
+			users.push({name: name, age: age});
+
+			//JSON.stingify превращает объекты в строки
+			localStorage.setItem ("users", JSON.stringify(users));
+		}
+
+		function addEventListeners() {
+			const form = document.querySelectorAll('form')[0];
+			form.addEventListener('submit', onFormSubmit);
+		}
+		//Ждем, когда загрузится весь документ, иначе не можем найти форму
+		document.addEventListener('DOMContentLoaded', addEventListeners);
+		</script>
 </body>
 
 </html>
