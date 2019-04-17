@@ -68,7 +68,7 @@
 			В дальнейшем предполагается, что мы будем хранить в localStorage несколько юзеров
 			Пока не загружаем список из него, а создаем каждый раз новый
 			*/
-			const users = [];
+			//const users = [];
 			users.push({name: name, age: age});
 
 		
@@ -87,8 +87,10 @@
 		
 		    document.addEventListener('DOMContentLoaded', outputUsers);
 			function outputUsers() {
-			 var localValue = localStorage.getItem("users");
-             console.log(localValue); 
+				
+			 //var localValue = JSON.parse(localStorage.getItem("users"));
+			 users = JSON.parse(localStorage.getItem("users") || "[]");
+             console.log(users); 
 			}
 
 		</script>
