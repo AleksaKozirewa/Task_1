@@ -1,3 +1,4 @@
+    
 <!DOCTYPE html>
 <html lang="">
 
@@ -43,7 +44,7 @@
 				<div class="buttons">
 					
 															
-					<input type="submit" value="Add">
+					<input type="submit" value="Add" id="delete1">
 				</div>
 			</fieldset>
 		</form>
@@ -60,7 +61,6 @@
 		function onFormSubmit(e) {
 			//Чтобы форма не перезагружалась 
 			e.preventDefault();
-
 			//Обозначаем переменные понятными именами
 			const name = document.getElementById("name").value;
 			const age = document.getElementById("age").value;
@@ -70,14 +70,12 @@
 			*/
 			//const users = [];
 			users.push({name: name, age: age});
-
 		
 			
 			
 			//JSON.stingify превращает объекты в строки
 			localStorage.setItem ("users", JSON.stringify(users));
 		}
-
 		function addEventListeners() {
 			const form = document.querySelectorAll('form')[0];
 			form.addEventListener('submit', onFormSubmit);
@@ -93,6 +91,17 @@
              console.log(users); 
 			}
 
+			//document.getElementById("delete1").addEventListener("click", clear);
+function clear(){
+document.getElementById("name").value = "";
+document.getElementById("age").value = "";
+//document.getElementById("name").focus();
+}
+
+delete1.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
+//delete1.addEventListener("click", addEventListeners); 
+delete1.addEventListener("click", outputUsers); 
+delete1.addEventListener("click", clear); // Очистка полей при нажатии Add
 		</script>
 </body>
 
