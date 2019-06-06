@@ -31,7 +31,7 @@
 
 
 
-		<form>
+		<form id="MyForm">
 			<fieldset class="information">
 				<legend>Personal Information</legend>
 				<label for="name" style="color: #aaa999">Name</label>
@@ -44,13 +44,13 @@
 				<div class="buttons">
 					
 															
-					<input type="submit" value="Add" id="delete1">
+					<input type="submit" value="Add" onclick="clear()" id="delete1">
 				</div>
 			</fieldset>
 		</form>
 
 
-		<fieldset class="users" style="color: #aaa999">
+		<fieldset class="users" style="color: #aaa999" id="users">
 			<div>No users here... yet
 				<hr>
 			</div>
@@ -92,16 +92,42 @@
 			}
 
 			//document.getElementById("delete1").addEventListener("click", clear);
+/*			
 function clear(){
 document.getElementById("name").value = "";
 document.getElementById("age").value = "";
 //document.getElementById("name").focus();
 }
+*/
 
-delete1.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
+//delete1.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
 //delete1.addEventListener("click", addEventListeners); 
-delete1.addEventListener("click", outputUsers); 
-delete1.addEventListener("click", clear); // Очистка полей при нажатии Add
+//delete1.addEventListener("click", outputUsers); 
+//delete1.addEventListener("click", clear); // Очистка полей при нажатии Add
+
+
+function clear(){
+	document.getElementById("MyForm").reset();
+}
+
+function OnClick() {
+	delete1.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
+	delete1.addEventListener("click", outputUsers); 
+	delete1.addEventListener("click", clear);
+}
+delete1.addEventListener("click", OnClick);
+
+/*function clear(){
+	document.reset();
+}
+delete1.addEventListener("click", clear);
+*/
+
+//``<li>$ {user.name} </li>``
+const container = document.getElementById("users");
+container.innerHTML = markup;
+
+
 		</script>
 </body>
 
