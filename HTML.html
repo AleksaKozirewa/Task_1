@@ -58,55 +58,38 @@
 
 	</main>
 	<script>
-		function onFormSubmit(e) {
-			//Чтобы форма не перезагружалась 
-			e.preventDefault();
-			//Обозначаем переменные понятными именами
-			const name = document.getElementById("name").value;
-			const age = document.getElementById("age").value;
-			/* 
-			В дальнейшем предполагается, что мы будем хранить в localStorage несколько юзеров
-			Пока не загружаем список из него, а создаем каждый раз новый
-			*/
-			//const users = [];
-			users.push({name: name, age: age});
-		
-			
-			
-			//JSON.stingify превращает объекты в строки
-			localStorage.setItem ("users", JSON.stringify(users));
-		}
-		function addEventListeners() {
-			const form = document.querySelectorAll('form')[0];
-			form.addEventListener('submit', onFormSubmit);
-		}
-		//Ждем, когда загрузится весь документ, иначе не можем найти форму
-		document.addEventListener('DOMContentLoaded', addEventListeners);
-		
-		    document.addEventListener('DOMContentLoaded', outputUsers);
-			function outputUsers() {
-				
-			 //var localValue = JSON.parse(localStorage.getItem("users"));
-			 users = JSON.parse(localStorage.getItem("users") || "[]");
-             console.log(users); 
-			}
 
-			//document.getElementById("delete1").addEventListener("click", clear);
-/*			
-function clear(){
-document.getElementById("name").value = "";
-document.getElementById("age").value = "";
-//document.getElementById("name").focus();
+function onFormSubmit(e) {
+	//Чтобы форма не перезагружалась 
+	e.preventDefault();
+	//Обозначаем переменные понятными именами
+	const name = document.getElementById("name").value;
+	const age = document.getElementById("age").value;
+	/* 
+	В дальнейшем предполагается, что мы будем хранить в localStorage несколько юзеров
+	Пока не загружаем список из него, а создаем каждый раз новый
+	*/
+	//const users = [];
+	users.push({name: name, age: age});
+	//JSON.stingify превращает объекты в строки
+	localStorage.setItem ("users", JSON.stringify(users));
 }
-*/
 
-//delete1.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
-//delete1.addEventListener("click", addEventListeners); 
-//delete1.addEventListener("click", outputUsers); 
-//delete1.addEventListener("click", clear); // Очистка полей при нажатии Add
+function addEventListeners() {
+	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
+	form.addEventListener('submit', onFormSubmit);
+}
+//Ждем, когда загрузится весь документ, иначе не можем найти форму
+document.addEventListener('DOMContentLoaded', addEventListeners);
+document.addEventListener('DOMContentLoaded', outputUsers);
 
+function outputUsers() {
+	 //var localValue = JSON.parse(localStorage.getItem("users"));
+	users = JSON.parse(localStorage.getItem("users") || "[]");
+    console.log(users); 
+}
 
-function clear(){
+function clear() {
 	document.getElementById("MyForm").reset();
 }
 
@@ -117,15 +100,13 @@ function OnClick() {
 }
 delete1.addEventListener("click", OnClick);
 
-/*function clear(){
-	document.reset();
-}
-delete1.addEventListener("click", clear);
-*/
-
-//``<li>$ {user.name} </li>``
+const arr = users.map(function f(markup) {
+	return markup = `<li>${users.name}</li>`;
 const container = document.getElementById("users");
 container.innerHTML = markup;
+});
+delete1.addEventListener("click", f);
+
 
 
 		</script>
