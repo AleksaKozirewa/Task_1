@@ -78,9 +78,11 @@ function onFormSubmit(e) {
 function pageLoaded() {
 	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
 	form.addEventListener('submit', onFormSubmit);
-	form.addEventListener("click", OnClick);
-	
-	
+	const input = document.querySelectorAll('input')[2];
+	//input.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
+	input.addEventListener("click", outputUsers); 
+	input.addEventListener("click", clear);
+	//form.addEventListener("click", OnClick);
 }
 //Ждем, когда загрузится весь документ, иначе не можем найти форму
 document.addEventListener('DOMContentLoaded', pageLoaded);
@@ -97,12 +99,12 @@ function clear() {
 	document.getElementById("MyForm").reset();
 }
 
-function OnClick() {
+/*function OnClick() {
 	const input = document.querySelectorAll('input')[2];
 	input.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
 	input.addEventListener("click", outputUsers); 
 	input.addEventListener("click", clear);
-}
+}*/
 
 
 
