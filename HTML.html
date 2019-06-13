@@ -44,7 +44,7 @@
 				<div class="buttons">
 					
 															
-					<input type="submit" value="Add" onclick="clear()" id="delete1">
+					<input type="submit" value="Add" id="delete1">
 				</div>
 			</fieldset>
 		</form>
@@ -69,19 +69,23 @@ function onFormSubmit(e) {
 	В дальнейшем предполагается, что мы будем хранить в localStorage несколько юзеров
 	Пока не загружаем список из него, а создаем каждый раз новый
 	*/
-	//const users = [];
+	//const users = [name, age];
 	users.push({name: name, age: age});
 	//JSON.stingify превращает объекты в строки
 	localStorage.setItem ("users", JSON.stringify(users));
 }
 
-function addEventListeners() {
+function pageLoaded() {
 	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
 	form.addEventListener('submit', onFormSubmit);
+	form.addEventListener("click", OnClick);
+	
+	
 }
 //Ждем, когда загрузится весь документ, иначе не можем найти форму
-document.addEventListener('DOMContentLoaded', addEventListeners);
-document.addEventListener('DOMContentLoaded', outputUsers);
+document.addEventListener('DOMContentLoaded', pageLoaded);
+//document.addEventListener('DOMContentLoaded', outputUsers);	
+
 
 function outputUsers() {
 	 //var localValue = JSON.parse(localStorage.getItem("users"));
@@ -94,20 +98,33 @@ function clear() {
 }
 
 function OnClick() {
-	delete1.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
-	delete1.addEventListener("click", outputUsers); 
-	delete1.addEventListener("click", clear);
+	const input = document.querySelectorAll('input')[2];
+	input.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
+	input.addEventListener("click", outputUsers); 
+	input.addEventListener("click", clear);
 }
-delete1.addEventListener("click", OnClick);
 
-const arr = users.map(function f(markup) {
-	return markup = `<li>${users.name}</li>`;
-const container = document.getElementById("users");
-container.innerHTML = markup;
+
+
+/*const users = []
+	users.map(function (name, index, users) {
+		console.log(name, index, users); 
+		return name;
+	/*const container = document.getElementById("users");
+	
+	const markup = `<li>${users.name}</li>`;
+    container.innerHTML = markup;
 });
-delete1.addEventListener("click", f);
+*/
 
+//delete1.addEventListener("click", f);
 
+/*function f() {
+	const container = document.getElementById("users");
+	markup = `<li>${2}</li>`;
+    container.innerHTML = markup;
+}
+delete1.addEventListener("click", f);*/
 
 		</script>
 </body>
