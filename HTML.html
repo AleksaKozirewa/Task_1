@@ -70,27 +70,17 @@ function onFormSubmit(e) {
 	Пока не загружаем список из него, а создаем каждый раз новый
 	*/
 	//const users = [name, age];
+	/*const users = [
+    { 
+        "name": " ",
+        "age": " "
+   }
+];*/
 	users.push({name: name, age: age});
 	//JSON.stingify превращает объекты в строки
 	localStorage.setItem ("users", JSON.stringify(users));
-}
-
-function pageLoaded() {
-	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
-	
-	//const input = document.querySelectorAll('input')[2];
-	//form.addEventListener("click", OnClick);
-	form.addEventListener('submit', clear);
-	//form.reset();
-	form.addEventListener('submit', outputUsers); 
-	form.addEventListener('submit', onFormSubmit);
-	// Добавляет данные в массив при нажатии Add
 	
 }
-//Ждем, когда загрузится весь документ, иначе не можем найти форму
-document.addEventListener('DOMContentLoaded', pageLoaded);
-//document.addEventListener('DOMContentLoaded', outputUsers);	
-
 
 function outputUsers() {
 	 //var localValue = JSON.parse(localStorage.getItem("users"));
@@ -101,6 +91,32 @@ function outputUsers() {
 function clear() {
 	document.getElementById("MyForm").reset();
 }
+
+
+function pageLoaded() {
+	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
+	
+	//const input = document.querySelectorAll('input')[2];
+	//form.addEventListener("click", OnClick);
+
+
+	//form.reset();
+	form.addEventListener('submit', onFormSubmit);
+	form.addEventListener('submit', outputUsers); 
+	form.addEventListener('submit', clear);
+
+		// Добавляет данные в массив при нажатии Add
+	
+}
+
+
+
+//Ждем, когда загрузится весь документ, иначе не можем найти форму
+document.addEventListener('DOMContentLoaded', pageLoaded);
+//document.addEventListener('DOMContentLoaded', outputUsers);	
+
+
+
 
 
 /*function OnClick() {
