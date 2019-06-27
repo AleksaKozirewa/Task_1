@@ -101,6 +101,7 @@ function pageLoaded() {
 
 
 	//form.reset();
+	outputUsers();
 	form.addEventListener('submit', onFormSubmit);
 	form.addEventListener('submit', outputUsers); 
 	form.addEventListener('submit', clear);
@@ -114,40 +115,43 @@ function pageLoaded() {
 //Ждем, когда загрузится весь документ, иначе не можем найти форму
 document.addEventListener('DOMContentLoaded', pageLoaded);
 //document.addEventListener('DOMContentLoaded', outputUsers);	
+const container = document.getElementById("users");
+function output_to_usrs() {
+container.innerHTML = users.map( function(name) {
+	markup = `<li>${name}</li>`;
+    return markup;
+	});
+}
 
-
-
-
-
-/*function OnClick() {
-	const input = document.querySelectorAll('input')[2];
-	input.addEventListener("click", onFormSubmit); // Добавляет данные в массив при нажатии Add	
-	input.addEventListener("click", outputUsers); 
-	input.addEventListener("click", clear);
-}*/
-
-
-
-/*const users = []
-	users.map(function (name, index, users) {
-		console.log(name, index, users); 
-		return name;
-	/*const container = document.getElementById("users");
+delete1.addEventListener("click", output_to_usrs);
+/*container.innerHTML = users.map(function ( index, users) {
+		const markup = `<li>${users.name}</li>`;
+		return markup;
 	
-	const markup = `<li>${users.name}</li>`;
+});
+        //const container = document.getElementById("users");
+		//const markup = `<li>${users.name}</li>`;
+        //container.innerHTML = markup;
+
+/*
+users.map(function (name, index, users) {
+		const container = document.getElementById("users");
+		const markup = `<li>${users.name}</li>`;
     container.innerHTML = markup;
+		return name;
+	
 });
 */
 
 //delete1.addEventListener("click", f);
-
-/*function f() {
+/*
+function f() {
 	const container = document.getElementById("users");
-	markup = `<li>${2}</li>`;
+	markup = `<li>${users.name}</li>`;
     container.innerHTML = markup;
 }
-delete1.addEventListener("click", f);*/
-
+delete1.addEventListener("click", f);
+*/
 		</script>
 </body>
 
