@@ -92,6 +92,13 @@ function clear() {
 	document.getElementById("MyForm").reset();
 }
 
+function output_to_usrs() {
+	const container = document.getElementById("users");
+container.innerHTML = users.map( function(name) {
+	markup = `<ul><li>${name}</li></ul>`;
+    return markup;
+	});
+}
 
 function pageLoaded() {
 	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
@@ -105,7 +112,7 @@ function pageLoaded() {
 	form.addEventListener('submit', onFormSubmit);
 	form.addEventListener('submit', outputUsers); 
 	form.addEventListener('submit', clear);
-
+	form.addEventListener('submit', output_to_usrs);
 		// Добавляет данные в массив при нажатии Add
 	
 }
@@ -115,15 +122,10 @@ function pageLoaded() {
 //Ждем, когда загрузится весь документ, иначе не можем найти форму
 document.addEventListener('DOMContentLoaded', pageLoaded);
 //document.addEventListener('DOMContentLoaded', outputUsers);	
-const container = document.getElementById("users");
-function output_to_usrs() {
-container.innerHTML = users.map( function(name) {
-	markup = `<li>${name}</li>`;
-    return markup;
-	});
-}
 
-delete1.addEventListener("click", output_to_usrs);
+
+
+//delete1.addEventListener("click", output_to_usrs);
 /*container.innerHTML = users.map(function ( index, users) {
 		const markup = `<li>${users.name}</li>`;
 		return markup;
