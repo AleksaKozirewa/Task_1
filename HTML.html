@@ -85,20 +85,26 @@ function onFormSubmit(e) {
 function outputUsers() {
 	 //var localValue = JSON.parse(localStorage.getItem("users"));
 	users = JSON.parse(localStorage.getItem("users") || "[]");
-    console.log(users); 
+  	console.log(users); 
+	const container = document.getElementById("users");
+	container.innerHTML = users.map(function(name) {
+	/*markup = `<ul>${name}</ul>`;
+	return markup;*/
+	return`<ul>${name, age}</ul>`;
+	}).join('');
 }
 
 function clear() {
 	document.getElementById("MyForm").reset();
 }
 
-function output_to_usrs() {
+/*function output_to_usrs() {
 	const container = document.getElementById("users");
 container.innerHTML = users.map( function(name) {
 	markup = `<ul><li>${name}</li></ul>`;
     return markup;
 	});
-}
+}*/
 
 function pageLoaded() {
 	const form = document.querySelectorAll('form')[0];//возвращает список всех элементов в первой (и единственной пока)form
@@ -112,7 +118,7 @@ function pageLoaded() {
 	form.addEventListener('submit', onFormSubmit);
 	form.addEventListener('submit', outputUsers); 
 	form.addEventListener('submit', clear);
-	form.addEventListener('submit', output_to_usrs);
+	//form.addEventListener('submit', output_to_usrs);
 		// Добавляет данные в массив при нажатии Add
 	
 }
