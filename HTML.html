@@ -87,13 +87,14 @@ function outputUsers() {
 	users = JSON.parse(localStorage.getItem("users") || "[]");
   	console.log(users); 
 	const container = document.getElementById("users");
-	container.innerHTML = users.map(function(name) {
+	container.innerHTML = users.map(function({name:name, age:age}) {
 	/*markup = `<ul>${name}</ul>`;
 	return markup;*/
-	return`<ul>${name, age}</ul>`;
+	return `<ul>${name}</ul>`;
 	}).join('');
 }
-
+	
+	
 function clear() {
 	document.getElementById("MyForm").reset();
 }
