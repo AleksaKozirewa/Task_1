@@ -82,18 +82,37 @@ function onFormSubmit(e) {
 	
 }
 
-function outputUsers() {
+/*function outputUsers() {
 	 //var localValue = JSON.parse(localStorage.getItem("users"));
 	users = JSON.parse(localStorage.getItem("users") || "[]");
   	console.log(users); 
 	const container = document.getElementById("users");
 	container.innerHTML = users.map(function({name:name, age:age}) {
+		return `<ul>${name}</ul>`;
+	}).join('');
+}*/
+
+
+function outputUsers() {
+	 //var localValue = JSON.parse(localStorage.getItem("users"));
+	users = JSON.parse(localStorage.getItem("users") || "[]");
+  	console.log(users); 
+	const container = document.getElementById("users");
+	
+	container.innerHTML = users.map(function (users) {
 	/*markup = `<ul>${name}</ul>`;
 	return markup;*/
-	return `<ul>${name}</ul>`;
+	return `<ul>${users.name}</ul>`;
 	}).join('');
-}
-	
+	}
+
+/*const obj = {a:4, b:5, c:0}; 
+function f (x) { 
+console.log(obj.a); 
+console.log(obj.c); 
+} 
+
+f(obj);*/
 	
 function clear() {
 	document.getElementById("MyForm").reset();
