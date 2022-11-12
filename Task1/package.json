@@ -20,7 +20,7 @@
   "homepage": "https://github.com/AleksaKozirewa/Task1#readme",
   "devDependencies": {
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "axios": "^0.19.0"
