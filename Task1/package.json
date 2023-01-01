@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/AleksaKozirewa/Task1#readme",
   "devDependencies": {
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.9"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "axios": "^0.19.0"
